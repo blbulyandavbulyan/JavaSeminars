@@ -2,7 +2,6 @@ package org.blbulyandavbulyan.jseminars.seminar1.homework;
 
 
 import java.util.HashMap;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Calculator {
@@ -67,6 +66,8 @@ public class Calculator {
                         System.out.println("Если вы наберёте exit, то выйдете из программы");
                         System.out.println("Вы можете складывать, вычитать и умножать числа, для этого запишите сначала число, потом пробел, операцию, снова пробел и снова число");
                         System.out.println("Операции обозначаются так же как и в математике +, -, * - стандартно. / - деление");
+                        System.out.println("Вместо классических обозначений операций сложения, умножения, деления, вычитания, вы так же можете использовать английские слова для их обозначения");
+                        System.out.println("Например: 2 ADD 2 будет иметь такой же результат как и 2 + 2, доступный список ключевых слов: MULTIPLY, DIVIDE, ADD, SUBTRACT");
                     }
                     default -> {
                         String[] commandArgs = command.split(" ");
@@ -82,11 +83,9 @@ public class Calculator {
             }
             catch (NumberFormatException e){
                 System.err.println("Кажется вы ввели не число на первой или второй позиции");
-//                scanner.next();
             }
             catch (IllegalArgumentException e){
                 System.err.println("Вы ввели неверную операцию");
-//                scanner.next();
             }
         }
 
