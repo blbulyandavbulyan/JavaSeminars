@@ -2,6 +2,8 @@ package org.blbulyandavbulyan.jseminars.seminar1.homework.expressionsolver;
 
 import org.blbulyandavbulyan.jseminars.seminar1.homework.Calculator;
 
+import java.util.Scanner;
+
 // Задано уравнение вида q + w = e, q, w, e >= 0. Некоторые цифры могут быть заменены знаком вопроса, например, 2? + ?5 = 69.
 // Требуется восстановить выражение до верного равенства. Предложить хотя бы одно решение или сообщить, что его нет.
 //
@@ -9,8 +11,10 @@ public class ExpressionSolver {
     private ComboPicker q, w, e;
     private Calculator.Operation operation;
     private Calculator calculator;
-    public ExpressionSolver(String expr, Calculator calculator){
+    public ExpressionSolver(Calculator calculator){
         this.calculator = calculator;
+    }
+    public void parseExpression(String expr){
         String[] parts = expr.split("=");
         if(parts.length != 2)throw new IllegalArgumentException("Частей, разделяемых = не две!");
         String leftEqualPart = parts[0].trim();
@@ -46,7 +50,26 @@ public class ExpressionSolver {
         if(!found) System.out.println("Нет решений!");
     }
     public static void main(String[] args) {
-        String rebus = "29 + ?? = ?9";
-        new ExpressionSolver(rebus, new Calculator()).printAllSolutions();
+        //данные вводить в формате: n1 op n2 = r
+        // где, n1 - первое число с вопросиками,
+        // op - операция
+        // n2 - второе число с вопросиками
+        // r - ожидаемый результат(тоже может быть с вопросиками)
+        // поддерживаются только целые числа(причём не отрицательные, т.к. работу с отрицательными я не загладывал)
+        Scanner scanner = new Scanner(System.in);
+        ExpressionSolver expressionSolver = new ExpressionSolver(new Calculator());
+        while (true){
+            String rebus = scanner.nextLine();
+            if(rebus.equals("exit"))return;
+            try{
+                expressionSolver.parseExpression(rebus);
+                expressionSolver.printAllSolutions();
+            }
+            catch (RuntimeException e){
+                System.out.println("Вероятно вы ввели ребус в неверном формате");
+            }
+
+        }
+
     }
 }
