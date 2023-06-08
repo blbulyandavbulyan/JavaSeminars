@@ -34,7 +34,7 @@ public class Calculator {
             return valueOf(operationStr);
         }
     }
-    public static double calculate(double a, double b, Operation operation){
+    public double calculate(double a, double b, Operation operation){
         switch (operation){
             case ADD -> {
                 return a + b;
@@ -51,9 +51,18 @@ public class Calculator {
             default -> throw new IllegalArgumentException("Operation not supported!");
         }
     }
-
+    public boolean isValidOperation(String operation){
+        try{
+            Operation.getOperation(operation);
+            return true;
+        }
+        catch (IllegalArgumentException e) {
+            return false;
+        }
+    }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        Calculator calculator = new Calculator();
         System.out.println("Наберите help для справки");
         while (true){
             try{
@@ -75,7 +84,7 @@ public class Calculator {
                             double a = Double.parseDouble(commandArgs[0]);
                             Operation operation = Operation.getOperation(commandArgs[1]);
                             double b = Double.parseDouble(commandArgs[2]);
-                            System.out.printf("%f %s %f = %f\n".formatted(a, operation.toString(), b, calculate(a, b, operation)));
+                            System.out.printf("%f %s %f = %f\n".formatted(a, operation.toString(), b, calculator.calculate(a, b, operation)));
                         }
                         else System.err.println("Неверное количество аргументов!");
                     }
