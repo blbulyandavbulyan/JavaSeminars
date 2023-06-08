@@ -10,13 +10,29 @@ import java.util.function.Supplier;
  * */
 class ComboPicker {
     static class Digit {
+        private final int initialValue;
         int digit;
         private final boolean fixed;
 
         public Digit(int digit, boolean fixed) {
-            if(!(digit >= 0 && digit <= 9))throw new IllegalArgumentException("Цифра вне диапазона!");
-            this.digit = digit;
+            if(!isValidDigit(digit))throw new IllegalArgumentException("Цифра вне диапазона!");
+            this.initialValue = this.digit = digit;
             this.fixed = fixed;
+        }
+        public void setDigit(int digit){
+            if(!fixed){
+                if(isValidDigit(digit)){
+                    this.digit = digit;
+                }
+                else throw new IllegalArgumentException("Цифра вне диапазона!");
+            }
+            else throw new UnsupportedOperationException("Вы установили этот разряд как зафиксированный!");
+        }
+        public void reset(){
+            digit = initialValue;
+        }
+        private boolean isValidDigit(int digit){
+            return digit >= 0 && digit <= 9;
         }
     }
 
@@ -100,11 +116,14 @@ class ComboPicker {
     }
     /**
      * Сбрасывает перебиратор в начальное состояние (какое было инициализировано конструктором
-     *
      * */
     public void reset() {
         // FIXME: 08.06.2023 сделать чтобы метод сбрасывал переборщик в начальное состояние
         currentValue = initialValue;
+        for(int i = 0; i < notFixedDigits.length; i++){
+            notFixedDigits[i].reset();
+        }
+        nextCombination = calculate();
     }
 
     private boolean isValidOperand(String s) {

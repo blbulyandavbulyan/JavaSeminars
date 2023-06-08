@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Calculator {
-    enum Operation{
+    public enum Operation{
         //зачем весь этот огород ?
         //таким образом можно писать 2 + 2 или например 2 ADD 2, аналогично и с другими операциями
         ADD("+"),
