@@ -17,8 +17,4 @@ public class Strings {
 
         return reverseSentenceBuilder.toString();
     }
-    public static void main(String[] args) {
-        System.out.println(reverseSentence("Добро пожаловать на курс по Java"));
-//        System.out.println(findMiddleIndex(new int[]{2,7,3,6,5,6}));
-    }
 }
