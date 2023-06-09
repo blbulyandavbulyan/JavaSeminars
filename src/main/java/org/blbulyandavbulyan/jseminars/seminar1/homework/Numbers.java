@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 /**
- * Данный класс содержит методы для решения задач 1 и 2
+ * Данный класс содержит методы для решения задач 1 и 2, 8
  * */
 public class Numbers {
     /**
@@ -46,7 +46,7 @@ public class Numbers {
      * */
     public static boolean isPrime(int n){
         throwIfFromLargeThanTo(1, Integer.MAX_VALUE);
-        for (int i = 2; i <= n; i++) {
+        for (int i = 2; i < n; i++) {
             if(n % i == 0)return false;
         }
         return n != 1;
@@ -77,5 +77,28 @@ public class Numbers {
      * */
     public static Collection<Integer> findPrimeNumbersFromOne(int n){
         return findPrimeNumbers(1, n);
+    }
+
+    //решение задачи 8
+    /**
+     * Данная функция ищет индекс в массиве, такой что сумма элементов справа равна сумме элементов слева от него
+     * @return искомый индекс, или -1 если такого индекса нет
+     * */
+    public static int findMiddleIndex(int[] arr){
+        //находим сумму всех элементов в массиве
+        int sumOfElements = java.util.Arrays.stream(arr).sum();
+        int leftSum = arr[0];
+        //начинаем обход со второго элемента, чтобы у нас был элемент справа
+        for (int i = 1; i < arr.length; i++) {
+            int rightSum = sumOfElements - leftSum - arr[i];
+            if(rightSum == leftSum)return i;
+            else leftSum+=arr[i];
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(findSum(1, 10));
+        System.out.println(findSum(0));
     }
 }
