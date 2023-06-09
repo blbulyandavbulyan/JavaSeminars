@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class ExpressionSolver {
     private ComboPicker q, w, e;
     private Calculator.Operation operation;
-    private Calculator calculator;
+    private final Calculator calculator;
     public ExpressionSolver(Calculator calculator){
         this.calculator = calculator;
     }
@@ -66,7 +66,8 @@ public class ExpressionSolver {
                 expressionSolver.printAllSolutions();
             }
             catch (RuntimeException e){
-                System.out.println("Вероятно вы ввели ребус в неверном формате");
+                System.err.println("Вероятно вы ввели ребус в неверном формате");
+                System.err.println(e.getMessage());
             }
 
         }

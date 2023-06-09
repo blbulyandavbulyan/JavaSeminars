@@ -129,11 +129,4 @@ class ComboPicker {
     private boolean isValidOperand(String s) {
         return s.matches("[\\d|?]+");
     }
-
-    public static void main(String[] args) {
-        ComboPicker comboPicker = new ComboPicker("??", IllegalArgumentException::new);
-        while (comboPicker.hasNext()){
-            System.out.println(comboPicker.next());
-        }
-    }
 }
