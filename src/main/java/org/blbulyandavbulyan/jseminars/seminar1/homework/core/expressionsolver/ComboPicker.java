@@ -1,4 +1,4 @@
-package org.blbulyandavbulyan.jseminars.seminar1.homework.expressionsolver;
+package org.blbulyandavbulyan.jseminars.seminar1.homework.core.expressionsolver;
 
 import java.util.Arrays;
 import java.util.NoSuchElementException;

@@ -1,7 +1,7 @@
 package org.blbulyandavbulyan.jseminars.seminar1.homework.tasks;
 
-import org.blbulyandavbulyan.jseminars.seminar1.homework.Calculator;
-import org.blbulyandavbulyan.jseminars.seminar1.homework.expressionsolver.ExpressionSolver;
+import org.blbulyandavbulyan.jseminars.seminar1.homework.core.Calculator;
+import org.blbulyandavbulyan.jseminars.seminar1.homework.core.expressionsolver.ExpressionSolver;
 
 import java.util.Scanner;
 

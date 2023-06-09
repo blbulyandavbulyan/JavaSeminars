@@ -1,6 +1,6 @@
-package org.blbulyandavbulyan.jseminars.seminar1.homework.expressionsolver;
+package org.blbulyandavbulyan.jseminars.seminar1.homework.core.expressionsolver;
 
-import org.blbulyandavbulyan.jseminars.seminar1.homework.Calculator;
+import org.blbulyandavbulyan.jseminars.seminar1.homework.core.Calculator;
 
 public record ExpressionSolution(int q, int w, int e, Calculator.Operation operation) {
 

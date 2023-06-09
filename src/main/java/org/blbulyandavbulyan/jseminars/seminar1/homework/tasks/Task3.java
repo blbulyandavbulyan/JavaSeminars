@@ -1,7 +1,7 @@
 package org.blbulyandavbulyan.jseminars.seminar1.homework.tasks;
 //3) Реализовать простой калькулятор
 
-import org.blbulyandavbulyan.jseminars.seminar1.homework.Calculator;
+import org.blbulyandavbulyan.jseminars.seminar1.homework.core.Calculator;
 
 import java.util.Scanner;
 

@@ -1,6 +1,6 @@
 package org.blbulyandavbulyan.jseminars.seminar1.homework.tasks;
 
-import org.blbulyandavbulyan.jseminars.seminar1.homework.Numbers;
+import org.blbulyandavbulyan.jseminars.seminar1.homework.core.Numbers;
 
 import java.util.Collection;
 

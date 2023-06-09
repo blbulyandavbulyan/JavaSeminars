@@ -1,4 +1,4 @@
-package org.blbulyandavbulyan.jseminars.seminar1.homework;
+package org.blbulyandavbulyan.jseminars.seminar1.homework.core;
 
 
 import java.util.HashMap;
