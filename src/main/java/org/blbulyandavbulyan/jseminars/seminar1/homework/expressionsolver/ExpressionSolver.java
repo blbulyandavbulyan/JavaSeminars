@@ -49,28 +49,4 @@ public class ExpressionSolver {
         }
         if(!found) System.out.println("Нет решений!");
     }
-    public static void main(String[] args) {
-        //данные вводить в формате: n1 op n2 = r
-        // где, n1 - первое число с вопросиками,
-        // op - операция
-        // n2 - второе число с вопросиками
-        // r - ожидаемый результат(тоже может быть с вопросиками)
-        // поддерживаются только целые числа(причём не отрицательные, т.к. работу с отрицательными я не загладывал)
-        Scanner scanner = new Scanner(System.in);
-        ExpressionSolver expressionSolver = new ExpressionSolver(new Calculator());
-        while (true){
-            String rebus = scanner.nextLine();
-            if(rebus.equals("exit"))return;
-            try{
-                expressionSolver.parseExpression(rebus);
-                expressionSolver.printAllSolutions();
-            }
-            catch (RuntimeException e){
-                System.err.println("Вероятно вы ввели ребус в неверном формате");
-                System.err.println(e.getMessage());
-            }
-
-        }
-
-    }
 }
