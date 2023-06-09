@@ -2,13 +2,13 @@ package org.blbulyandavbulyan.jseminars.seminar1.homework.expressionsolver;
 
 import org.blbulyandavbulyan.jseminars.seminar1.homework.Calculator;
 
-import java.util.Scanner;
+import java.util.function.Consumer;
 
 // Задано уравнение вида q + w = e, q, w, e >= 0. Некоторые цифры могут быть заменены знаком вопроса, например, 2? + ?5 = 69.
 // Требуется восстановить выражение до верного равенства. Предложить хотя бы одно решение или сообщить, что его нет.
 //
 public class ExpressionSolver {
-    private ComboPicker q, w, e;
+    private ComboPicker qPicker, wPicker, ePicker;
     private Calculator.Operation operation;
     private final Calculator calculator;
     public ExpressionSolver(Calculator calculator){
@@ -18,11 +18,11 @@ public class ExpressionSolver {
         String[] parts = expr.split("=");
         if(parts.length != 2)throw new IllegalArgumentException("Частей, разделяемых = не две!");
         String leftEqualPart = parts[0].trim();
-        e = new ComboPicker(parts[1].trim(), ()->new IllegalArgumentException("Выражение после = не соответствует требуемому шаблону!"));
+        ePicker = new ComboPicker(parts[1].trim(), ()->new IllegalArgumentException("Выражение после = не соответствует требуемому шаблону!"));
         String[] leftParts = leftEqualPart.split(" ");
         if(leftParts.length != 3)throw new IllegalArgumentException("Неверная левая часть выражения!");
-        q = new ComboPicker(leftParts[0].trim(), ()-> new IllegalArgumentException("Неверный левый операнд в левой части!"));
-        w = new ComboPicker(leftParts[2].trim(), ()->new IllegalArgumentException("Неверный правый операнд в левой части!"));
+        qPicker = new ComboPicker(leftParts[0].trim(), ()-> new IllegalArgumentException("Неверный левый операнд в левой части!"));
+        wPicker = new ComboPicker(leftParts[2].trim(), ()->new IllegalArgumentException("Неверный правый операнд в левой части!"));
         try{
             operation = Calculator.Operation.getOperation(leftParts[1].trim());
         }
@@ -30,23 +30,25 @@ public class ExpressionSolver {
             throw new IllegalArgumentException("Неверный оператор!", e);
         }
     }
-    public void printAllSolutions(){
+    public void iterateOverSolutions(Consumer<ExpressionSolution> solutionConsumer, Runnable noElements){
         boolean found = false;
-        while (e.hasNext()){
-            int expectedResult = e.next();
-            while (q.hasNext()){
-                int qV = q.next();
-                while (w.hasNext()){
-                    int wV = w.next();
-                    if((int)calculator.calculate(qV, wV, operation) == expectedResult){
-                        System.out.printf("%d %s %d = %d\n", qV, operation.toString(), wV, expectedResult);
+        while (ePicker.hasNext()){
+            int e = ePicker.next();
+            while (qPicker.hasNext()){
+                int q = qPicker.next();
+                while (wPicker.hasNext()){
+                    int w = wPicker.next();
+                    if((int)calculator.calculate(q, w, operation) == e){
+                        solutionConsumer.accept(new ExpressionSolution(q, w, e, operation));
                         found = true;
                     }
                 }
-                w.reset();
+                wPicker.reset();
             }
-            q.reset();
+            qPicker.reset();
         }
-        if(!found) System.out.println("Нет решений!");
+        if(!found) {
+            if(noElements != null)noElements.run();
+        }
     }
 }

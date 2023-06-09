@@ -23,7 +23,7 @@ public class Task4 {
             if(rebus.equals("exit"))return;
             try{
                 expressionSolver.parseExpression(rebus);
-                expressionSolver.printAllSolutions();
+                expressionSolver.iterateOverSolutions(System.out::println, ()-> System.out.println("Нет решений"));
             }
             catch (RuntimeException e){
                 System.err.println("Вероятно вы ввели ребус в неверном формате");
