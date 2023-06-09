@@ -96,9 +96,4 @@ public class Numbers {
         }
         return -1;
     }
-
-    public static void main(String[] args) {
-        System.out.println(findSum(1, 10));
-        System.out.println(findSum(0));
-    }
 }
