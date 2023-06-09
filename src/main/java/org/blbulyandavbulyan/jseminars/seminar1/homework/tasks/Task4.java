@@ -19,15 +19,15 @@ public class Task4 {
         ExpressionSolver expressionSolver = new ExpressionSolver(new Calculator());
         while (true){
             System.out.print("Введите ребус: ");
-            String rebus = scanner.nextLine();
+            String rebus = scanner.nextLine().trim();
             if(rebus.equals("exit"))return;
             try{
                 expressionSolver.parseExpression(rebus);
                 expressionSolver.iterateOverSolutions(System.out::println, ()-> System.out.println("Нет решений"));
             }
             catch (RuntimeException e){
-                System.err.println("Вероятно вы ввели ребус в неверном формате");
-                System.err.println(e.getMessage());
+                System.out.println("Вероятно вы ввели ребус в неверном формате");
+                System.out.println(e.getMessage());
             }
 
         }
