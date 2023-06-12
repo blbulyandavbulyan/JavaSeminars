@@ -3,8 +3,20 @@ package org.blbulyandavbulyan.jseminars.seminar1.homework.core;
 
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class Calculator {
+    /**
+     * если данное поле null, то логирование отключено
+     */
+    private final Logger logger;
+    public Calculator() {
+        this(null);
+    }
+    public Calculator(Logger logger){
+        this.logger = logger;
+    }
+
     public enum Operation{
         //зачем весь этот огород ?
         //таким образом можно писать 2 + 2 или например 2 ADD 2, аналогично и с другими операциями
@@ -35,6 +47,9 @@ public class Calculator {
         }
     }
     public double calculate(double a, double b, Operation operation){
+        if(logger != null){
+            logger.info("Calculating %f %s %f".formatted(a, operation.toString(), b));
+        }
         switch (operation){
             case ADD -> {
                 return a + b;
@@ -48,7 +63,10 @@ public class Calculator {
             case MULTIPLY -> {
                 return a*b;
             }
-            default -> throw new IllegalArgumentException("Operation not supported!");
+            default -> {
+                if(logger != null)logger.info("Someone give unsupported operation");
+                throw new IllegalArgumentException("Operation not supported!");
+            }
         }
     }
     public boolean isValidOperation(String operation){
