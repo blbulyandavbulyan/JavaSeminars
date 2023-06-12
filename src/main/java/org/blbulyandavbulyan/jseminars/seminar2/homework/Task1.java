@@ -26,7 +26,7 @@ public class Task1 {
         while (matcher.find()){
             String key = matcher.group(1);
             String valueOfKey = matcher.group(2);
-            Object objValue = null;
+            Object objValue;
             //наш valueOfKey - строка
             if(valueOfKey.contains("\"")){
                 objValue = valueOfKey.replaceAll("\"", "");
