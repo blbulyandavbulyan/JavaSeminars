@@ -1,11 +1,6 @@
 package org.blbulyandavbulyan.jseminars.seminar2.homework;
 
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Random;
-import java.util.logging.FileHandler;
 import java.util.logging.Logger;
-import java.util.stream.IntStream;
 
 public class BubbleSortingWithLogging {
     private final Logger logger;
