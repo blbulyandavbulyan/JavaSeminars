@@ -10,7 +10,7 @@ public class FindPrefix {
         else System.out.println("Нет префикса");
     }
     public static int findPrefix(String[] strs){
-        String[] lStrs = Arrays.stream(strs).map(s->s.toLowerCase()).toArray(String[]::new);
+        String[] lStrs = Arrays.stream(strs).map(String::toLowerCase).toArray(String[]::new);
         String first = lStrs[0];
         int result = -1;
         for(int prefixLength = 1;  prefixLength < first.length(); prefixLength++){

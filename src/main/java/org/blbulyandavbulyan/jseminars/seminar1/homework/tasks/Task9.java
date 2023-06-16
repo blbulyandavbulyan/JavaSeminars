@@ -1,7 +1,8 @@
 package org.blbulyandavbulyan.jseminars.seminar1.homework.tasks;
 
-import java.io.*;
-import java.nio.charset.Charset;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 
 //Задание №9 (доп)

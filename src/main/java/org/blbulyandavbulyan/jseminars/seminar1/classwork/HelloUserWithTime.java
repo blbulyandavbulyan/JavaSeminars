@@ -1,7 +1,6 @@
 package org.blbulyandavbulyan.jseminars.seminar1.classwork;
 
 import java.time.LocalTime;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 

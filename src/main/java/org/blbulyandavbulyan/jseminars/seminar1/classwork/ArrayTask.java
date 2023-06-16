@@ -9,12 +9,11 @@ public class ArrayTask {
     public static int countOfOnes(int[] arr){
         int count = 0;
         int maxCount = 0;
-        for(int i = 0; i < arr.length; i++){
-            if(arr[i] == 0) {
-                if(count > maxCount)maxCount = count;
+        for (int j : arr) {
+            if (j == 0) {
+                if (count > maxCount) maxCount = count;
                 count = 0;
-            }
-            else if(arr[i] == 1)count++;
+            } else if (j == 1) count++;
         }
         if(count > maxCount)maxCount = count;
         return maxCount;

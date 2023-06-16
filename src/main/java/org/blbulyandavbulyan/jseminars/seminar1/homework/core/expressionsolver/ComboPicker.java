@@ -36,9 +36,7 @@ class ComboPicker {
         }
     }
 
-    private String operand;
-    private int currentCombination;
-    //первый элемент в массиве - самый младший разряд числа
+    //Первый элемент в массиве - самый младший разряд числа
     //т.к. так удобней использовать индекс в качестве степени десятки
     private final Digit[] digits;
     //данный массив будет хранить только разряды, в которых нет вопросика
@@ -75,7 +73,6 @@ class ComboPicker {
         }
         this.initialValue = currentValue;
         this.maxValue = currentMaxValue;
-        this.operand = operand;
     }
     /**
      * Проверяет, есть ли следующая комбинация
@@ -120,8 +117,8 @@ class ComboPicker {
     public void reset() {
         // FIXME: 08.06.2023 сделать чтобы метод сбрасывал переборщик в начальное состояние
         currentValue = initialValue;
-        for(int i = 0; i < notFixedDigits.length; i++){
-            notFixedDigits[i].reset();
+        for (Digit notFixedDigit : notFixedDigits) {
+            notFixedDigit.reset();
         }
         nextCombination = calculate();
     }

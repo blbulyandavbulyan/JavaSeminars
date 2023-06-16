@@ -2,12 +2,11 @@ package org.blbulyandavbulyan.jseminars.seminar1.homework.core;
 
 
 import java.util.HashMap;
-import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class Calculator {
     /**
-     * если данное поле null, то логирование отключено
+     * Если данное поле null, то логирование отключено
      */
     private final Logger logger;
     public Calculator() {

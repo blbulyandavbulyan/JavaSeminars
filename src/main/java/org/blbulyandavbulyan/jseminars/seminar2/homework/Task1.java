@@ -18,7 +18,7 @@ public class Task1 {
      * Генерирует строку для sql запроса с where где имя_столбца = значению
      * @param params map, где ключ - имя столбца в таблице, а значение - параметр для сравнения
      * @param logicalOperator бинарный логический оператор, который будет разделять фрагменты имя столбца = значению
-     * @return строку вида имя_стобца1 = значение1 $logicalOperator имя_стобца2 = значение2 ...
+     * @return строку вида имя_столбца1 = значение1 $logicalOperator имя_столбца2 = значение2 ...
      */
     public static String generateWherePartEqualsAll(Map<String, Object> params, String logicalOperator){
         StringBuilder sb = new StringBuilder();

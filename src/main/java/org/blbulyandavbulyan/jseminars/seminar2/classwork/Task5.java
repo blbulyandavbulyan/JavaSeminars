@@ -1,14 +1,10 @@
 package org.blbulyandavbulyan.jseminars.seminar2.classwork;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Paths;
 import java.util.Arrays;
-import java.util.List;
 
 //📌 Напишите метод, который вернет содержимое текущей папки в виде
 //массива строк.

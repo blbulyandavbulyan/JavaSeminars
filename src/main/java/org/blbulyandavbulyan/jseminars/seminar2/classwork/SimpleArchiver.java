@@ -38,7 +38,7 @@ public class SimpleArchiver {
     public static String decompress(String compressed){
         StringBuilder result = new StringBuilder();
         int currentIndexInString = compressed.length() - 1;
-        int currentCount = 0;
+        int currentCount;
         while (currentIndexInString >= 0){
             int currentPower = 0;
             currentCount = 0;

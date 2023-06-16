@@ -8,7 +8,7 @@ import static org.blbulyandavbulyan.utils.Lists.generateRandomNumbers;
 //📌 Отсортировать список методом sort() и вывести его на
 //экран.
 public class Task1 {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
         List<Integer> integers = generateRandomNumbers(10, 0, 100);
         System.out.println(integers);
         integers.sort(Integer::compareTo);

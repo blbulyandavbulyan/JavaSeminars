@@ -7,7 +7,7 @@ public class Strings {
      * @return строку, содержащую слова в обратном порядке
      * */
     public static String reverseSentence(String phrase){
-        //words содержит слова, с гарантированным отсутсвием пробелов по бокам
+        //words содержит слова, с гарантированным отсутствием пробелов по бокам
         String[] words = java.util.Arrays.stream(phrase.split(" ")).map(String::trim).toArray(String[]::new);
         StringBuilder reverseSentenceBuilder = new StringBuilder();
         for(int i = words.length - 1; i >= 0; i--) {
