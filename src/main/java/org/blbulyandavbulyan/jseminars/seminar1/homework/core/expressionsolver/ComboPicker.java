@@ -9,32 +9,6 @@ import java.util.function.Supplier;
  * @author David Blbulyan
  * */
 class ComboPicker {
-    static class Digit {
-        private final int initialValue;
-        int digit;
-        private final boolean fixed;
-
-        public Digit(int digit, boolean fixed) {
-            if(!isValidDigit(digit))throw new IllegalArgumentException("Цифра вне диапазона!");
-            this.initialValue = this.digit = digit;
-            this.fixed = fixed;
-        }
-        public void setDigit(int digit){
-            if(!fixed){
-                if(isValidDigit(digit)){
-                    this.digit = digit;
-                }
-                else throw new IllegalArgumentException("Цифра вне диапазона!");
-            }
-            else throw new UnsupportedOperationException("Вы установили этот разряд как зафиксированный!");
-        }
-        public void reset(){
-            digit = initialValue;
-        }
-        private boolean isValidDigit(int digit){
-            return digit >= 0 && digit <= 9;
-        }
-    }
 
     //Первый элемент в массиве - самый младший разряд числа
     //т.к. так удобней использовать индекс в качестве степени десятки
@@ -62,14 +36,14 @@ class ComboPicker {
                 digits[digitPower] = new Digit(i != 0 ? 0 : 1, false);
             }
 
-            nextCombination +=digits[digitPower].digit*(int)Math.pow(10, digitPower);
+            nextCombination += digits[digitPower].getDigit() *(int)Math.pow(10, digitPower);
         }
-        notFixedDigits = Arrays.stream(digits).filter(d->!d.fixed).toArray(Digit[]::new);
+        notFixedDigits = Arrays.stream(digits).filter(d->!d.isFixed()).toArray(Digit[]::new);
         int currentMaxValue = 0;
         for (int notFixedDigitPower = 0; notFixedDigitPower < notFixedDigits.length; notFixedDigitPower++) {
             int d = (int) Math.pow(10, notFixedDigitPower);
             currentMaxValue+=9*d;
-            currentValue+=notFixedDigits[notFixedDigitPower].digit*d;
+            currentValue+= notFixedDigits[notFixedDigitPower].getDigit() *d;
         }
         this.initialValue = currentValue;
         this.maxValue = currentMaxValue;
@@ -95,7 +69,7 @@ class ComboPicker {
                 //и записать их в соответсвующем порядке в notFixedDigits
                 int currentNumber = currentValue;
                 for (Digit notFixedDigit : notFixedDigits) {
-                    notFixedDigit.digit = currentNumber % 10;
+                    notFixedDigit.setDigit(currentNumber % 10);
                     currentNumber /= 10;
                 }
                 nextCombination = calculate();
@@ -107,7 +81,7 @@ class ComboPicker {
     private int calculate(){
         int result = 0;
         for (int powerOfDigit = 0; powerOfDigit < digits.length; powerOfDigit++) {
-            result+=digits[powerOfDigit].digit*Math.pow(10, powerOfDigit);
+            result+= digits[powerOfDigit].getDigit() *Math.pow(10, powerOfDigit);
         }
         return result;
     }
