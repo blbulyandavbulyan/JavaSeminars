@@ -41,4 +41,4 @@ class MinMaxAverageForStreams implements MinMaxAverage{
         result.sum = sum + another.sum;
         return result;
     }
-};
+}
