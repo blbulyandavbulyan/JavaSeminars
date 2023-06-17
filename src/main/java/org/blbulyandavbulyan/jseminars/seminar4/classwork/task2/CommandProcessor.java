@@ -1,5 +1,7 @@
 package org.blbulyandavbulyan.jseminars.seminar4.classwork.task2;
 
+import org.blbulyandavbulyan.jseminars.seminar4.classwork.stringstorage.StringStorage;
+
 import java.io.PrintStream;
 import java.util.Objects;
 import java.util.function.Consumer;
@@ -45,7 +47,7 @@ public class CommandProcessor {
      */
     public void processCommand(String processedCommand){
         String[] splitCommand = processedCommand.split("~");
-        String action = splitCommand[0];
+        String action = splitCommand[0].toLowerCase();
         switch (action){
             case "print"->{
                 if(splitCommand.length == 2){
@@ -62,7 +64,10 @@ public class CommandProcessor {
                 }
             }
             case "revert" ->{
-                if(splitCommand.length == 1)stringStorage.revert();
+                if(splitCommand.length == 1) {
+                    if(!stringStorage.isEmpty())stringStorage.revert();
+                    else ps.println("Вы ничего не добавили в список, чтобы удалить!");
+                }
                 else throw new IllegalArgumentException("Неверная команда, после revert ничего не ожидалось!");
             }
             default -> {
