@@ -72,16 +72,4 @@ public class ArrayStack<T> implements Stack<T>{
         else if(size > 0)return array[size - 1];
         else throw new IllegalArgumentException("Размер стэка меньше нуля!");
     }
-
-    public static void main(String[] args) {
-        Stack<Integer> stack = new ArrayStack<>(Integer[]::new);
-        for(int i = 0; i < 10; i++) {
-            stack.push(i);
-        }
-        for(int i = 0; i < 10; i++) {
-            System.out.println("peek: " + stack.peek());
-            System.out.println("pop: " + stack.pop());
-        }
-        System.out.println(stack.empty());
-    }
 }
