@@ -16,7 +16,7 @@ public class MeasureLinkedAndArrayListsAddingTime {
     }
     public static void addElementsInList(List<Integer> list, int count){
         for(int i = 0; i < count; i++){
-            list.add(list.size() > 0 ? list.size() - 1 : 0, i);
+            list.add(i);
         }
     }
 }
