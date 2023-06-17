@@ -41,4 +41,12 @@ public abstract class StackTest {
         stack.pop();
         Assertions.assertTrue(stack.empty());
     }
+    @Test
+    public void sizeTest(){
+        var stack = createStack();
+        for (int i = 0; i < 10; i++) {
+            stack.push(i);
+        }
+        Assertions.assertEquals(10, stack.size());
+    }
 }
