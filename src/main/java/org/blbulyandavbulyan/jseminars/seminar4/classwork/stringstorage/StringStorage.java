@@ -1,4 +1,4 @@
-package org.blbulyandavbulyan.jseminars.seminar4.classwork.task2;
+package org.blbulyandavbulyan.jseminars.seminar4.classwork.stringstorage;
 
 import java.util.function.Consumer;
 
