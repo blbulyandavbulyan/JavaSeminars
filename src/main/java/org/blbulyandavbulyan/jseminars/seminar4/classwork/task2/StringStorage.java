@@ -27,11 +27,11 @@ public interface StringStorage {
     String get(int index);
 
     /**
-     * Проходится по всему хранилищу и отдаёт все строки в stringConsumer
+     * Проходится по всему хранилищу и отдаёт все строки в stringConsumer в обратном порядке
+     * Если список пуст, потребитель не будет вызван
      * @param stringConsumer потребитель строк, находящихся в хранилище
-     * @param orEmpty действие, которое будет выполнено если в хранилище нет строк(может быть null)
      */
-    void forEach(Consumer<String> stringConsumer, Runnable orEmpty);
+    void forEachReversed(Consumer<String> stringConsumer);
 
     /**
      * Проверяет, пусто ли хранилище
@@ -43,4 +43,11 @@ public interface StringStorage {
      * @return количество строк в хранилище
      */
     int size();
+
+    /**
+     * Удаляет строку из списка под заданным индексом
+     * @param index индекс строки, который нужно удалить
+     * @throws IndexOutOfBoundsException если индекс выходит за диапазон [0;size)
+     */
+    void remove(int index);
 }
