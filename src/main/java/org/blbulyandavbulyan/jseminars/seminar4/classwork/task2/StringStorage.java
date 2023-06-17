@@ -38,11 +38,6 @@ public interface StringStorage {
      * @return true если пусто, иначе false
      */
     boolean isEmpty();
-    /**
-     * Позволяет узнать размер хранилища
-     * @return количество строк в хранилище
-     */
-    int size();
 
     /**
      * Удаляет строку из списка под заданным индексом
