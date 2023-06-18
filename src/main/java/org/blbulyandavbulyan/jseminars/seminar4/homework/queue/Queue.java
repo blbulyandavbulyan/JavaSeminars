@@ -14,12 +14,14 @@ public interface Queue<T> {
     /**
      * Удаляет первый элемент из очереди
      * @return удалённый элемент
+     * @throws java.util.NoSuchElementException если очередь пуста
      */
     T dequeue();
 
     /**
      * Находит первый элемент в очереди и не удаляет его
      * @return первый элемент
+     * @throws java.util.NoSuchElementException если очередь пуста
      */
     T first();
 }
