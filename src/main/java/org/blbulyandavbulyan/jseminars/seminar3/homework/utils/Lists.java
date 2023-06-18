@@ -1,7 +1,6 @@
 package org.blbulyandavbulyan.jseminars.seminar3.homework.utils;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collector;
@@ -45,9 +44,8 @@ public class Lists {
     }
     /**
      * Сортирует список list методом сортировки слиянием
-     *
      * @param list список для сортировки
-     * @param <T>  тип элемента в списке, должен быть Comparable
+     * @param <T> тип элемента в списке, должен быть Comparable
      * @return отсортированный список
      */
     public static <T extends Comparable<T>> List<T> mergeSort(List<T> list) {
