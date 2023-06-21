@@ -3,7 +3,6 @@ package org.blbulyandavbulyan.jseminars.seminar4.homework.stack;
 import java.util.Arrays;
 import java.util.EmptyStackException;
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 /**
  * Предоставляет реализацию стека, на основе ArrayList

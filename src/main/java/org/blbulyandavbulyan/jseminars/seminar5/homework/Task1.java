@@ -3,7 +3,6 @@ package org.blbulyandavbulyan.jseminars.seminar5.homework;
 import org.blbulyandavbulyan.jseminars.seminar5.homework.phonebook.Person;
 import org.blbulyandavbulyan.jseminars.seminar5.homework.phonebook.PhoneBook;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
