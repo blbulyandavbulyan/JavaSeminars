@@ -124,11 +124,4 @@ public class HorseSolutionFinder {
             Arrays.fill(line, false);
         }
     }
-    public static void main(String[] args) {
-        HorseSolutionFinder finder = new HorseSolutionFinder(8);
-        Collection<Coordinates> result = finder.findSolution(3, 3);
-        for (var coordinates : result) {
-            System.out.println(coordinates);
-        }
-    }
 }
