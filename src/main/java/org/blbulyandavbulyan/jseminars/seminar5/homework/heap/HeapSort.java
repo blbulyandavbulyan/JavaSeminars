@@ -3,6 +3,8 @@ package org.blbulyandavbulyan.jseminars.seminar5.homework.heap;
 /**
  * Данный класс реализует сортировку с помощью двоичной кучи
  * За основу была взята <a href="https://ru.wikipedia.org/wiki/%D0%94%D0%B2%D0%BE%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D0%BA%D1%83%D1%87%D0%B0">статья</a>
+ * Методы heapify, heapSort, buildHeap - по сути, полные аналоги соответствующих методов из статьи
+ * За исключением heapify, в нём есть немного моей импровизации, чтобы убрать рекурсию, которая была в оригинале
  */
 public class HeapSort {
 
@@ -20,8 +22,7 @@ public class HeapSort {
     }
 
     /**
-     * Данный метод строит двоичную кучу из переданного массива, по сути полный аналог метода
-     * <a href="https://ru.wikipedia.org/wiki/%D0%94%D0%B2%D0%BE%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D0%BA%D1%83%D1%87%D0%B0#%D0%9F%D0%BE%D1%81%D1%82%D1%80%D0%BE%D0%B5%D0%BD%D0%B8%D0%B5_%D0%BA%D1%83%D1%87%D0%B8">отсюда</a>
+     * Данный метод строит двоичную кучу из переданного массива
      * @param arr массив, который будет преобразован в двоичную кучу
      */
     private static void buildHeap(int[] arr) {
@@ -39,6 +40,8 @@ public class HeapSort {
      * @throws IllegalArgumentException если parentIndex не в промежутке [0;heapSize)
      */
     private static void heapify(int[] heap, int heapSize, int parentIndex) {
+        //здесь присутствует небольшая импровизация, моего авторства
+        //возможно из-за неё будет ничего не понятно
         if (heapSize > heap.length || heapSize < 0) throw new IllegalArgumentException("heapSize must be in [0;heap.length]");
         if(parentIndex > heapSize || parentIndex < 0)throw new IllegalArgumentException("parentIndex must be in [0;heapSize)");
         int indexOfMaximumChild;//в данной переменной будет храниться индекс максимального ребёнка, если он есть у parent или -1 если нет
