@@ -12,45 +12,6 @@ import java.util.function.BiPredicate;
  * Координатные оси направлены из начала координат по сторонам доски
  */
 public class HorseSolutionFinder {
-    private static class CellsMonitor{
-        private final boolean[][] visitedCells;
-        private int countVisitCells = 0;
-        public CellsMonitor(int size){
-            this.visitedCells = new boolean[size][size];
-        }
-        /**
-         * Помечает заданную клетку как посещённую
-         * @param x абсцисса
-         * @param y ордината
-         */
-        private void markAsVisitedCell(int x, int y) {
-            visitedCells[x][y] = true;//отмечаем клетку как посещённую
-            countVisitCells++;//увеличиваем количество посещённых клеток
-        }
-        /**
-         * Помечает заданную клетку как не посещённую
-         * @param x абсцисса
-         * @param y ордината
-         */
-        private void markAsUnvisitedCell(int x, int y) {
-            visitedCells[x][y] = false;//отмечаем клетку как не посещённую
-            countVisitCells--;//уменьшаем количество посещённых клеток
-        }
-        public boolean isCellVisited(int x, int y){
-            return visitedCells[x][y];
-        }
-        public int getCountVisitCells() {
-            return countVisitCells;
-        }
-
-        public void reset() {
-            //сбрасываем все клетки в не посещённое состояние
-            for (var line : visitedCells) {
-                Arrays.fill(line, false);
-            }
-            countVisitCells = 0;//сбрасываем количество посещённых клеток в исходное
-        }
-    }
 
 
     private final int N;
