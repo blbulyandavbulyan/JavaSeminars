@@ -9,9 +9,12 @@ public class Task4 {
     //4) Шахматную доску размером NxN обойти конём так, чтобы фигура в каждой клетке была строго один раз
     public static void main(String[] args) {
         HorseSolutionFinder finder = new HorseSolutionFinder(8);
-        Collection<Coordinates> result = finder.findSolution(3, 3);
+        Collection<Coordinates> result = finder.findSolution(1, 7);
         for (var coordinates : result) {
-            System.out.println(coordinates);
+            printCoordinates(coordinates);
         }
+    }
+    public static void printCoordinates(Coordinates coordinates){
+        System.out.printf("%c%d\n", (char)(coordinates.getX()+'a'), coordinates.getY() + 1);
     }
 }
