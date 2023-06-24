@@ -4,7 +4,6 @@ import java.util.*;
 import java.util.function.Consumer;
 
 public class QueenSolutionFinder {
-    private final int N;
     private Collection<Coordinates> currentSolutionStorage;
     private final Set<Collection<Coordinates>> foundSolutions;
     private final CellsMonitor cellsMonitor;
@@ -13,8 +12,6 @@ public class QueenSolutionFinder {
      * @param N размер доски
      */
     public QueenSolutionFinder(int N){
-        this.N = N;
-
         foundSolutions = new HashSet<>();
         currentSolutionStorage = new ArrayList<>();
         cellsMonitor = new CellsMonitor(N);
