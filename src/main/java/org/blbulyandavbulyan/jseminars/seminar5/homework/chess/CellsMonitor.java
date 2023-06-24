@@ -3,7 +3,6 @@ package org.blbulyandavbulyan.jseminars.seminar5.homework.chess;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.stream.IntStream;
 
 /**
  * Данный класс предназначен для ведения учёта посещённых или не посещённых клеток
