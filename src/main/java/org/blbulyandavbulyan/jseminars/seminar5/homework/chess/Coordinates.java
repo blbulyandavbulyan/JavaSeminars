@@ -1,26 +1,10 @@
 package org.blbulyandavbulyan.jseminars.seminar5.homework.chess;
 
-import java.util.Objects;
-
-public class Coordinates {
-    private int x, y;
-
-    public Coordinates(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
+public record Coordinates(int x, int y) {
 
     @Override
     public String toString() {
         return "{x=" + x + ", y=" + y + '}';
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
     }
 
     @Override
@@ -31,8 +15,4 @@ public class Coordinates {
         return x == that.x && y == that.y;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(x, y);
-    }
 }
