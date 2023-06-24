@@ -15,6 +15,6 @@ public class Task4 {
         }
     }
     public static void printCoordinates(Coordinates coordinates){
-        System.out.printf("%c%d\n", (char)(coordinates.getX()+'a'), coordinates.getY() + 1);
+        System.out.printf("%c%d\n", (char)(coordinates.x()+'a'), coordinates.y() + 1);
     }
 }
