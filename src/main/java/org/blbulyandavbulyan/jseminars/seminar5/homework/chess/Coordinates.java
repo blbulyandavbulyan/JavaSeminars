@@ -15,6 +15,14 @@ public class Coordinates {
         return "{x=" + x + ", y=" + y + '}';
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -26,13 +34,5 @@ public class Coordinates {
     @Override
     public int hashCode() {
         return Objects.hash(x, y);
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
     }
 }

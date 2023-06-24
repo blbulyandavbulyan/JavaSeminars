@@ -1,6 +1,9 @@
 package org.blbulyandavbulyan.jseminars.seminar5.homework.chess;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.stream.IntStream;
 
 /**
  * Данный класс предназначен для ведения учёта посещённых или не посещённых клеток
@@ -71,5 +74,19 @@ class CellsMonitor {
             Arrays.fill(line, false);
         }
         countVisitCells = 0;//сбрасываем количество посещённых клеток в исходное
+    }
+
+    /**
+     * Получает координаты всех не посещённых клеток
+     * @return коллекцию координат всех непосещёных клеток
+     */
+    public Collection<Coordinates> getAllUnvisitedCells(){
+        Collection<Coordinates> result = new ArrayList<>();
+        for(int x = 0; x < visitedCells.length; x++){
+            for(int y = 0; y < visitedCells[x].length; y++){
+                if(!isCellVisited(x, y))result.add(new Coordinates(x, y));
+            }
+        }
+        return result;
     }
 }
