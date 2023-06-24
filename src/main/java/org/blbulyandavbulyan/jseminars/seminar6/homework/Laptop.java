@@ -42,4 +42,9 @@ public class Laptop {
         return model;
     }
 
+    @Override
+    public String toString() {
+        return "%s %s, RAM size: %d bytes, HDD size: %d bytes, OS family: %s, color: %s"
+                .formatted(vendor, model, getRAMSize(), getHDDSize(), getOSName(), getColor());
+    }
 }
