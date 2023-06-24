@@ -50,7 +50,7 @@ public class HorseSolutionFinder {
      */
     private boolean findSolution(Collection<Coordinates> availableMoves) {
         for (var availableMove : availableMoves) {
-            int currentX = availableMove.getX(), currentY = availableMove.getY();
+            int currentX = availableMove.x(), currentY = availableMove.y();
             cellsMonitor.markAsVisitedCell(currentX, currentY);//помечаем данную клетку как посещённую
             Collection<Coordinates> availableHorseMoves = getAvailableHorseMoves(currentX, currentY);//получаем доступные ходы из текущей клетки
             boolean found = findSolution(availableHorseMoves);//рекурсивный вызов этой же функции
