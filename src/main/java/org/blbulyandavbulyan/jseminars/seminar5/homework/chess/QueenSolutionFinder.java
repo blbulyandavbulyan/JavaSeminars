@@ -3,9 +3,21 @@ package org.blbulyandavbulyan.jseminars.seminar5.homework.chess;
 import java.util.*;
 import java.util.function.Consumer;
 
+/**
+ * Данный класс ищет решения задачи расстановки 8 ферзей на доске размером NxN, так чтобы они друг друга не били
+ */
 public class QueenSolutionFinder {
+    /**
+     * Текущее рассматриваемое решение
+     */
     private Collection<Coordinates> currentSolutionStorage;
+    /**
+     * Множество найденных решений, нужно для того чтобы не рассматривать дубликаты
+     */
     private final Set<Collection<Coordinates>> foundSolutions;
+    /**
+     * Монитор клеток
+     */
     private final CellsMonitor cellsMonitor;
     /**
      * Создаёт экземпляр решателя для доски размером NxN
@@ -16,6 +28,11 @@ public class QueenSolutionFinder {
         currentSolutionStorage = new ArrayList<>();
         cellsMonitor = new CellsMonitor(N);
     }
+
+    /**
+     * Метод ищет решения для данной задачи
+     * @param solutionConsumer
+     */
     public void findSolutions(Consumer<Collection<Coordinates>> solutionConsumer){
         //идея должна быть примерно такая, берём все доступные у нас клетки, ставим на первую из них королеву,
         // берём следующие все доступные клетки, перед тем как поставить туда королеву сначала проверяем,
@@ -49,6 +66,13 @@ public class QueenSolutionFinder {
         }
 
     }
+
+    /**
+     * Проверяет, атакует ли королева другую фигуру
+     * @param queenCoordinates координаты королевы
+     * @param anotherFigureCoordinates координаты другой фигуры
+     * @return true если атакует
+     */
     private boolean isQueenAttackAnotherFigure(Coordinates queenCoordinates, Coordinates anotherFigureCoordinates){
         //проверка вертикальных и горизонтальных линий
         final int queenX = queenCoordinates.x();
