@@ -7,8 +7,8 @@ public class QueenSolutionFinder {
     //3) На шахматной доске расставить 8 ферзей так, чтобы они не били друг друга
     private final int N;
     private Collection<Coordinates> currentSolutionStorage;
-    private Set<Collection<Coordinates>> foundSolutions;
-    private CellsMonitor cellsMonitor;
+    private final Set<Collection<Coordinates>> foundSolutions;
+    private final CellsMonitor cellsMonitor;
     /**
      * Создаёт экземпляр решателя для доски размером NxN
      * @param N размер доски
@@ -42,10 +42,10 @@ public class QueenSolutionFinder {
                 //здесь нам нужен ещё одна проверка, которая покажет, можем ли мы поставить ферзя с данными координатами на доску, чтоб он никого не бил
                 if(currentSolutionStorage.stream().noneMatch(addedCoordinates -> isQueenAttackAnotherFigure(coordinates, addedCoordinates))){
                     //наш ферзь никого не атакует на доске, ставим
-                    cellsMonitor.markAsVisitedCell(coordinates.getX(), coordinates.getY());//помечаем клетку посещённой
+                    cellsMonitor.markAsVisitedCell(coordinates.x(), coordinates.y());//помечаем клетку посещённой
                     currentSolutionStorage.add(coordinates);
                     findSolutions(solutionConsumer);//запускаем себя опять
-                    cellsMonitor.markAsUnvisitedCell(coordinates.getX(), coordinates.getY());//распосещаем клетку
+                    cellsMonitor.markAsUnvisitedCell(coordinates.x(), coordinates.y());//распосещаем клетку
                     currentSolutionStorage.remove(coordinates);
                 }
                 //если атакует, то мы берём следующие координаты
@@ -55,10 +55,10 @@ public class QueenSolutionFinder {
     }
     private boolean isQueenAttackAnotherFigure(Coordinates queenCoordinates, Coordinates anotherFigureCoordinates){
         //проверка вертикальных и горизонтальных линий
-        final int queenX = queenCoordinates.getX();
-        final int queenY = queenCoordinates.getY();
-        final int anotherX = anotherFigureCoordinates.getX();
-        final int anotherY = anotherFigureCoordinates.getY();
+        final int queenX = queenCoordinates.x();
+        final int queenY = queenCoordinates.y();
+        final int anotherX = anotherFigureCoordinates.x();
+        final int anotherY = anotherFigureCoordinates.y();
         //проверка вертикальных и горизонтальных линий
         if(queenX == anotherX || queenY == anotherY)return true;
         //проверка диагоналей
