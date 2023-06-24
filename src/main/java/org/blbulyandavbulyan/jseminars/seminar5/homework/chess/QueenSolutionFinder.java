@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.function.Consumer;
 
 /**
- * Данный класс ищет решения задачи расстановки 8 ферзей на доске размером NxN, так чтобы они друг друга не били
+ * Данный класс ищет решения задачи расстановки заданного количества ферзей на доске размером NxN, так чтобы они друг друга не били
  */
 public class QueenSolutionFinder {
     /**
@@ -31,14 +31,17 @@ public class QueenSolutionFinder {
 
     /**
      * Метод ищет решения для данной задачи
-     * @param solutionConsumer
+     * @param solutionConsumer функция, которая будет принимать коллекцию, содержащую координаты для постановки ферзей
+     * @param maxCountOfQueens максимальное количество ферзей, которые нужно поставить на доску
      */
-    public void findSolutions(Consumer<Collection<Coordinates>> solutionConsumer){
+    public void findSolutions(Consumer<Collection<Coordinates>> solutionConsumer, int maxCountOfQueens){
+        if(maxCountOfQueens<=0)throw new IllegalArgumentException("Количество ферзей для расстановки должно быть больше 0");
+
         //идея должна быть примерно такая, берём все доступные у нас клетки, ставим на первую из них королеву,
         // берём следующие все доступные клетки, перед тем как поставить туда королеву сначала проверяем,
         // не атакует ли эта королева, которую мы ставим уже имеющиеся, если атакует, откатываемся назад и берём следующую свободную клетку
         //если мы нашли вариант, при котором на доске будет стоять восемь королев, отдаём коллекцию из них в solutionConsumer
-        if(currentSolutionStorage.size() == 8){
+        if(currentSolutionStorage.size() == maxCountOfQueens){
             //добавляем решение только в том случае, если мы такого ещё не находили
             if(!foundSolutions.contains(currentSolutionStorage)){
                 //мы нашли решение, передаём решение нашему потребителю решений и меняем хранилище текущего решение на новое
@@ -57,7 +60,7 @@ public class QueenSolutionFinder {
                     //наш ферзь никого не атакует на доске, ставим
                     cellsMonitor.markAsVisitedCell(coordinates.x(), coordinates.y());//помечаем клетку посещённой
                     currentSolutionStorage.add(coordinates);
-                    findSolutions(solutionConsumer);//запускаем себя опять
+                    findSolutions(solutionConsumer,8);//запускаем себя опять
                     cellsMonitor.markAsUnvisitedCell(coordinates.x(), coordinates.y());//распосещаем клетку
                     currentSolutionStorage.remove(coordinates);
                 }

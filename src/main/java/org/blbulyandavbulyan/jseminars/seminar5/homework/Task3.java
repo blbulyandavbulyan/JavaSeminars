@@ -9,6 +9,6 @@ public class Task3 {
         finder.findSolutions(solution->{
             System.out.println(solution);
             System.out.println();
-        });
+        }, 8);
     }
 }
