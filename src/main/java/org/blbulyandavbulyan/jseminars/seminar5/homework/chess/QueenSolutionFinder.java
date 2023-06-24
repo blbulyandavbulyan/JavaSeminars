@@ -4,7 +4,6 @@ import java.util.*;
 import java.util.function.Consumer;
 
 public class QueenSolutionFinder {
-    //3) На шахматной доске расставить 8 ферзей так, чтобы они не били друг друга
     private final int N;
     private Collection<Coordinates> currentSolutionStorage;
     private final Set<Collection<Coordinates>> foundSolutions;
@@ -71,13 +70,5 @@ public class QueenSolutionFinder {
         int dy = queenY - anotherY;//это ничто иное как разность Y координат королевы и атакуемой фигуры
         int dx = queenX - anotherX;//разность X координат королевы и атакуемой фигуры
         return ((dy % dx == 0) && ((dy/dx == -1)|| (dy / dx == 1)));
-    }
-
-    public static void main(String[] args) {
-        QueenSolutionFinder finder = new QueenSolutionFinder(8);
-        finder.findSolutions(solution->{
-            System.out.println(solution);
-            System.out.println();
-        });
     }
 }
