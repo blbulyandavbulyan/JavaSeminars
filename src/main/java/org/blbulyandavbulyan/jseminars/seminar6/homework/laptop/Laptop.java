@@ -2,15 +2,45 @@ package org.blbulyandavbulyan.jseminars.seminar6.homework.laptop;
 
 import java.util.Objects;
 
-public class Laptop {
-//    private Long id;
+/**
+ * Данный класс предоставляет описание ноутбука для моего почти магазина
+ */
+public class Laptop {//примечание: на самом деле, здесь лучше было бы использовать record, а не class, но мы же record не проходили, да и в условии было сказано про класс
+
+    /**
+     * Производитель
+      */
     private final String vendor;
+    /**
+     * Модель
+     */
     private final String model;
+    /**
+     * Объём ОЗУ(в байтах)
+     */
     private final long RAMSize;
+    /**
+     * Объём HDD(в байтах)
+     */
     private final long HDDSize;
+    /**
+     * Наименование операционной системы
+     */
     private final String OSName;
+    /**
+     * Цвет в строковом представлении(словами)
+     */
     private final String color;
 
+    /**
+     * Конструктор, создающий экземпляр ноутбука
+     * @param vendor производитель
+     * @param model модель
+     * @param OSName наименование операционной системы
+     * @param color цвет в строковом представлении
+     * @param RAMSize объём оперативной памяти(в байтах)
+     * @param HDDSize объём жёсткого диска(в байтах)
+     */
     public Laptop(String vendor, String model, String OSName, String color, long RAMSize, long HDDSize) {
         this.vendor = vendor;
         this.model = model;
@@ -20,26 +50,44 @@ public class Laptop {
         this.color = color;
     }
 
+    /**
+     * @return объём ОЗУ в байтах
+     */
     public long getRAMSize() {
         return RAMSize;
     }
 
+    /**
+     * @return объём жёсткого диска в байтах
+     */
     public long getHDDSize() {
         return HDDSize;
     }
 
+    /**
+     * @return наименование операционной системы
+     */
     public String getOSName() {
         return OSName;
     }
 
+    /**
+     * @return цвет
+     */
     public String getColor() {
         return color;
     }
 
+    /**
+     * @return производитель ноутбука
+     */
     public String getVendor() {
         return vendor;
     }
 
+    /**
+     * @return модель ноутбука
+     */
     public String getModel() {
         return model;
     }

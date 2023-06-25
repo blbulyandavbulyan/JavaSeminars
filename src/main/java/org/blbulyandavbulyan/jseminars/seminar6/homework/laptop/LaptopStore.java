@@ -10,7 +10,9 @@ import java.util.Map;
  * В нём можно искать ноутбуки
  */
 public class LaptopStore {
-
+    /**
+     * В данной коллекции содержатся все ноутбуки доступные в моём как бы магазине
+     */
     private Collection<Laptop> laptops = new ArrayList<>();
 
     /**
