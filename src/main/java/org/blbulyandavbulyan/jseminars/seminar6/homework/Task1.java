@@ -1,6 +1,7 @@
 package org.blbulyandavbulyan.jseminars.seminar6.homework;
 
-import java.util.Collection;
+import org.blbulyandavbulyan.jseminars.seminar6.homework.laptop.Laptop;
+
 import java.util.HashSet;
 import java.util.Set;
 

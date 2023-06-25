@@ -1,11 +1,14 @@
 package org.blbulyandavbulyan.jseminars.seminar6.homework;
 
+import org.blbulyandavbulyan.jseminars.seminar6.homework.laptop.Laptop;
+import org.blbulyandavbulyan.jseminars.seminar6.homework.laptop.LaptopStore;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
 
-import static org.blbulyandavbulyan.jseminars.seminar6.homework.LaptopSearchingParamsReader.getParametersMapFromKeyboard;
+import static org.blbulyandavbulyan.jseminars.seminar6.homework.laptop.LaptopSearchingParamsReader.getParametersMapFromKeyboard;
 
 public class Task2 {
     public static void main(String[] args) {

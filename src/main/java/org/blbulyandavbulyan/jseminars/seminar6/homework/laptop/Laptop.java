@@ -1,4 +1,4 @@
-package org.blbulyandavbulyan.jseminars.seminar6.homework;
+package org.blbulyandavbulyan.jseminars.seminar6.homework.laptop;
 
 import java.util.Objects;
 
