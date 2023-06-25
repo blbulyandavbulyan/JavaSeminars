@@ -11,7 +11,7 @@ public class Laptop {
     private final String OSName;
     private final String color;
 
-    public Laptop(String vendor, String model, long RAMSize, long HDDSize, String OSName, String color) {
+    public Laptop(String vendor, String model, String OSName, String color, long RAMSize, long HDDSize) {
         this.vendor = vendor;
         this.model = model;
         this.RAMSize = RAMSize;
@@ -46,7 +46,7 @@ public class Laptop {
 
     @Override
     public String toString() {
-        return "%s %s, RAM size: %d bytes, HDD size: %d bytes, OS family: %s, color: %s"
+        return "{%s %s, RAM size: %d bytes, HDD size: %d bytes, OS family: %s, color: %s}"
                 .formatted(getVendor(), getModel(), getRAMSize(), getHDDSize(), getOSName(), getColor());
     }
 
