@@ -1,34 +1,56 @@
 package org.blbulyandavbulyan.jseminars.seminar6.homework;
 
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.stream.Collectors;
+import java.util.Map;
 
+/**
+ * Данный класс предоставляет некое подобие магазина ноутбуков
+ * В нём можно искать ноутбуки
+ */
 public class LaptopStore {
-    private Collection<Laptop> laptops;
 
-    public LaptopStore() {
+    private Collection<Laptop> laptops = new ArrayList<>();
 
+    /**
+     * Создаёт экземпляр магазина с заданным набором ноутбуков
+     * @param laptops набор ноутбуков, который будет в данном магазине
+     */
+    public LaptopStore(Collection<Laptop> laptops) {
+        this.laptops.addAll(laptops);
     }
 
     /**
      * Ищет подходящие ноутбуки по заданным критериям
-     * Строковые параметры могут быть null или пустыми, если их учитывать не нужно
-     * @param vendor производитель
-     * @param model модель
-     * @param OSName наименование операционной системы
-     * @param color цвет
-     * @param minimalRamSize минимальный размер памяти
-     * @param minimalHDDSize минимальный размер жёсткого диска
+     * @param filteringParams Map содержащая параметры, в Map могут быть следующие ключи:
+     *                        vendor - производитель(тип значения String)
+     *                        model - модель(тип значения String)
+     *                        os - наименование операционной системы(тип значения String)
+     *                        color - цвет(тип значения String)
+     *                        minRAM - минимальный объём памяти(тип значения Long)
+     *                        minHDD - минимальный объём жёсткого диска(тип значения Long)
      * @return коллекцию, содержащую подходящие ноутбуки, или пустую коллекцию, если таковых не нашлось
      */
-    public Collection<Laptop> find(String vendor, String model, String OSName, String color, long minimalRamSize, long minimalHDDSize) {
+    public Collection<Laptop> find(Map<String, Object> filteringParams){
+        String vendor = (String) filteringParams.getOrDefault("vendor", "");
+        String model = (String)filteringParams.getOrDefault("model", "");
+        String OSName = (String)filteringParams.getOrDefault("os", "");
+        String color = (String)filteringParams.getOrDefault("color", "");
+        long minimalRamSize = (Long) filteringParams.getOrDefault("minRAM", 0);
+        long minimalHDDSize = (Long)filteringParams.getOrDefault("minHDD", 0);
         return laptops.stream().filter(laptop ->
-            (vendor == null || vendor.isBlank() || laptop.getVendor().contains(vendor)) &&//проверка на производителя
-            (model == null || model.isBlank() || laptop.getModel().contains(model)) &&//проверка на модель
-            (OSName == null || OSName.isBlank() || laptop.getOSName().contains(OSName)) &&//проверка на ОС
-            (color == null || color.isBlank() || laptop.getColor().contains(color)) &&//проверка на цвет
-            (laptop.getRAMSize() >= minimalRamSize) && (laptop.getHDDSize() >= minimalHDDSize)//проверка на объём памяти и размер HDD
+                (vendor == null || vendor.isBlank() || laptop.getVendor().contains(vendor)) &&//проверка на производителя
+                        (model == null || model.isBlank() || laptop.getModel().contains(model)) &&//проверка на модель
+                        (OSName == null || OSName.isBlank() || laptop.getOSName().contains(OSName)) &&//проверка на ОС
+                        (color == null || color.isBlank() || laptop.getColor().contains(color)) &&//проверка на цвет
+                        (laptop.getRAMSize() >= minimalRamSize) && (laptop.getHDDSize() >= minimalHDDSize)//проверка на объём памяти и размер HDD
         ).toList();
     }
 }
