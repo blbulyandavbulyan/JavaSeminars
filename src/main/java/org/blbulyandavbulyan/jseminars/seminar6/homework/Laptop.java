@@ -47,7 +47,7 @@ public class Laptop {
     @Override
     public String toString() {
         return "%s %s, RAM size: %d bytes, HDD size: %d bytes, OS family: %s, color: %s"
-                .formatted(vendor, model, getRAMSize(), getHDDSize(), getOSName(), getColor());
+                .formatted(getVendor(), getModel(), getRAMSize(), getHDDSize(), getOSName(), getColor());
     }
 
     @Override
