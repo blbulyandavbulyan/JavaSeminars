@@ -28,18 +28,18 @@ public class LaptopStore {
      *                        model - модель(тип значения String)
      *                        os - наименование операционной системы(тип значения String)
      *                        color - цвет(тип значения String)
-     *                        minRAM - минимальный объём памяти(тип значения Long)
-     *                        minHDD - минимальный объём жёсткого диска(тип значения Long)
+     *                        minRAM - минимальный объём памяти(должна быть строка со значением Long)
+     *                        minHDD - минимальный объём жёсткого диска(должна быть строка со значением Long)
      *                        Строковые значения можно оставить пустыми
      * @return коллекцию, содержащую подходящие ноутбуки, или пустую коллекцию, если таковых не нашлось
      */
-    public Collection<Laptop> find(Map<String, Object> filteringParams){
-        String vendor = (String) filteringParams.getOrDefault("vendor", "");
-        String model = (String)filteringParams.getOrDefault("model", "");
-        String OSName = (String)filteringParams.getOrDefault("os", "");
-        String color = (String)filteringParams.getOrDefault("color", "");
-        long minimalRamSize = (Long) filteringParams.getOrDefault("minRAM", 0);
-        long minimalHDDSize = (Long)filteringParams.getOrDefault("minHDD", 0);
+    public Collection<Laptop> find(Map<String, String> filteringParams){
+        String vendor = filteringParams.getOrDefault("vendor", "");
+        String model = filteringParams.getOrDefault("model", "");
+        String OSName = filteringParams.getOrDefault("os", "");
+        String color = filteringParams.getOrDefault("color", "");
+        long minimalRamSize = Long.parseLong(filteringParams.getOrDefault("minRAM", "0"));
+        long minimalHDDSize = Long.parseLong(filteringParams.getOrDefault("minHDD", "0"));
         return laptops.stream().filter(laptop ->
                 (vendor == null || vendor.isBlank() || laptop.getVendor().contains(vendor)) &&//проверка на производителя
                         (model == null || model.isBlank() || laptop.getModel().contains(model)) &&//проверка на модель
