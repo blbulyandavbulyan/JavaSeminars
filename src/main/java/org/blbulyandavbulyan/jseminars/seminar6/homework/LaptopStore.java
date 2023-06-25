@@ -30,6 +30,7 @@ public class LaptopStore {
      *                        color - цвет(тип значения String)
      *                        minRAM - минимальный объём памяти(тип значения Long)
      *                        minHDD - минимальный объём жёсткого диска(тип значения Long)
+     *                        Строковые значения можно оставить пустыми
      * @return коллекцию, содержащую подходящие ноутбуки, или пустую коллекцию, если таковых не нашлось
      */
     public Collection<Laptop> find(Map<String, Object> filteringParams){
